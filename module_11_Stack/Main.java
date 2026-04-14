@@ -1,6 +1,6 @@
 import java.util.*;
 public class Main {
-   public static void main(String[] args) {
+   public static void main(String[] args) throws StackEmptyException, StackFullException {
 
      //  E[] myarr = new E[5]; cannot use with arrays
        Object[] arr = new Object[5];
@@ -21,14 +21,14 @@ public class Main {
        System.out.println(s1);
        System.out.println("Removing object from s1: " + s1.pop());
        System.out.println(s1);
-       System.out.println("Removing object from s1: " + s1.pop());
+//       System.out.println("Removing object from s1: " + s1.pop());
 
        System.out.println();
        Stack s2 = new Stack(words);
        System.out.println(s2);
        System.out.println("S2 is empty: " + s2.isEmpty());
        System.out.println(s2.peek());
-//       s2.push("fish");
+       s2.push("fish");
        System.out.println(s2);
 
 //      Stack<String> s1 = new Stack<>();
