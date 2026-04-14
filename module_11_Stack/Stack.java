@@ -14,10 +14,11 @@ public class Stack {
         top = data.length - 1;
     }
 
-    public Object peek() {
+    public Object peek() throws StackEmptyException {
         if(isEmpty()) {
-            System.err.println("Stack is empty");
-            System.exit(0);
+            throw new StackEmptyException();
+//            System.err.println("Stack is empty");
+//            System.exit(0);
         }
         return data[top];
     }
@@ -32,20 +33,22 @@ public class Stack {
 //        }
     }
 
-    public void push(Object obj) {
+    public void push(Object obj) throws StackFullException {
         if(top+1 < data.length) {
             top++;
             data[top] = obj;
         } else {
-            System.err.println("Stack is at max capacity");
-            System.exit(0);
+            throw new StackFullException();
+//            System.err.println("Stack is at max capacity");
+//            System.exit(0);
         }
     }
 
-    public Object pop() {
+    public Object pop() throws StackEmptyException {
         if(isEmpty()) {
-            System.err.println("Stack is empty. Nothing to remove.");
-            System.exit(0);
+            throw new StackEmptyException();
+//            System.err.println("Stack is empty. Nothing to remove.");
+//            System.exit(0);
         }
 /*      top--; // this will work, but will keep the object in the array still. Can lead to memory leaks, degrades performance, can get an OutOfMemoryError overtime
         return data[top+1];*/
@@ -63,4 +66,16 @@ public class Stack {
         }
         return result+="]";
     }
+}
+
+class StackEmptyException extends Exception {
+    public StackEmptyException() {
+        System.err.println("Stack is empty!!");
+    }
+}
+
+class StackFullException extends Exception {
+  public StackFullException() {
+      System.err.println("Stack is full!!");
+  }
 }
